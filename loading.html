@@ -12,15 +12,15 @@
     <script src="js/public.js"></script>
     <style>
         /*加载动画*/
-        .loader {display: inline-block;font-size: 0px;padding: 0px;position: fixed;z-index: 21;top:0;bottom: 0;left: 0;right: 0;display: none;}
+        .loader {display: inline-block;font-size: 0px;padding: 0px;position: absolute;z-index: 21;top:0;bottom: 0;left: 0;right: 0;display: none;}
         .loader .loader_bg{position:absolute;top:0;bottom: 0;left: 0;right: 0;background: rgba(0,0,0,0.3);}
         .loader .span_wrap{position:absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);-webkit-transform: translate(-50%,-50%);}
         .loader .span_wrap span {vertical-align: middle;border-radius: 100%;display: inline-block;width: 12px;height: 12px;margin: 0 2px;-webkit-animation: loader 0.8s linear infinite alternate;animation: loader 0.8s linear infinite alternate;}
-        .loader .span_wrap span:nth-child(1) {-webkit-animation-delay: -1s;animation-delay: -1s;background: rgba(255,255,255,0.8);}
-        .loader .span_wrap span:nth-child(2) {-webkit-animation-delay: -0.8s;animation-delay: -0.8s;background: rgba(255,255,255,0.9);}
-        .loader .span_wrap span:nth-child(3) {-webkit-animation-delay: -0.4s;animation-delay: -0.4s;background: rgba(255,255,255,1);}
-        .loader .span_wrap span:nth-child(4) {-webkit-animation-delay: -0.8s;animation-delay: -0.8s;background: rgba(255,255,255,0.9);}
-        .loader .span_wrap span:nth-child(5) {-webkit-animation-delay: -1s;animation-delay: -1s;background: rgba(255,255,255,0.8);}
+        .loader .span_wrap span:nth-child(1) {-webkit-animation-delay: -1s;animation-delay: -1s;background: rgba(160,160,160,0.8);}
+        .loader .span_wrap span:nth-child(2) {-webkit-animation-delay: -0.8s;animation-delay: -0.8s;background: rgba(160,160,160,0.9);}
+        .loader .span_wrap span:nth-child(3) {-webkit-animation-delay: -0.4s;animation-delay: -0.4s;background: rgba(160,160,160,1);}
+        .loader .span_wrap span:nth-child(4) {-webkit-animation-delay: -0.8s;animation-delay: -0.8s;background: rgba(160,160,160,0.9);}
+        .loader .span_wrap span:nth-child(5) {-webkit-animation-delay: -1s;animation-delay: -1s;background: rgba(160,160,160,0.8);}
         @keyframes loader {from {transform: scale(0, 0);}to {transform: scale(1, 1);}}
         @-webkit-keyframes loader {from {-webkit-transform: scale(0, 0);}to {-webkit-transform: scale(1, 1);}}
     </style>
@@ -46,8 +46,13 @@
     </article>
     <script>
         /*loading*/
-        var loading = function(){
+        var loading = function(param){
             me = {}
+            me.param = param?param:{
+                'container':document.body,
+                'hasBg':true
+            };
+
             me.init = function(){
                 me.loader=document.createElement("div"),
                 loader_bg=document.createElement("div"),
@@ -60,9 +65,11 @@
                     var span=document.createElement("span");
                     span_wrap.appendChild(span);   
                 }
-                me.loader.appendChild(loader_bg); 
+                if(me.param.hasBg){
+                   me.loader.appendChild(loader_bg); 
+                }
                 me.loader.appendChild(span_wrap); 
-                document.body.appendChild(me.loader);
+                me.param.container.appendChild(me.loader);
             }
             me.show = function(){
                 me.loader.style.display = 'block';
@@ -77,7 +84,8 @@
             return me;
         }
         
-        var loader = new loading();
+        var loader = new loading({'container':document.body,'hasBg':false});
+        //var loader = new loading({'container':document.getElementById('body-wrapper'),'hasBg':false});
         loader.show();
     </script>
 </body>
