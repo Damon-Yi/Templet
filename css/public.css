@@ -5,7 +5,6 @@ ul, li { list-style: none; }
 img { border: 0; }
 a {text-decoration: none; -webkit-tap-highlight-color: transparent;color: #000;}
 input, textarea {-webkit-tap-highlight-color: transparent;-webkit-user-modify: read-write-plaintext-only; -webkit-appearance: none; border-radius: 0; border:none;}
-body{background-color: #f0f1f5;}
 
 /* media */
 /* 横屏 */
