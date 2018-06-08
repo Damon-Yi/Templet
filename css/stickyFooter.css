@@ -1,0 +1,17 @@
+/* 方式1 */
+html, body {height: 100%;margin: 0;}
+.content {min-height: 100%;}
+.content-inside {padding: 20px;padding-bottom: 50px;}
+.footer {height: 50px;margin-top: -50px;background-color: #aaa;}
+
+/* 方式2 */
+html, body {margin: 0;padding: 0;}
+.content {min-height: calc(100vh - 50px);}
+.footer {height: 50px;background-color: #aaa;}
+
+/* 方式3 */     
+html, body {margin: 0;padding: 0;}
+html {height: 100%;}
+body {min-height: 100%;display: flex;flex-direction: column;}
+.content {flex: 1;}
+.footer {background-color: #aaa;}
