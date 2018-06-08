@@ -1,0 +1,84 @@
+@charset "UTF-8";
+/* CSS Document */
+body, div, ul, li, input, select, textarea, p, h3, html > body font, span, samp, em { margin: 0; padding: 0; font-family: "Microsoft YaHei",微软雅黑,"MicrosoftJhengHei",华文细黑,STHeiti,MingLiu; -webkit-tap-highlight-color: transparent;outline: none;}
+ul, li { list-style: none; }
+img { border: 0; }
+a {text-decoration: none; -webkit-tap-highlight-color: transparent;color: #000;}
+input, textarea {-webkit-tap-highlight-color: transparent;-webkit-user-modify: read-write-plaintext-only; -webkit-appearance: none; border-radius: 0; border:none;}
+body{background-color: #f0f1f5;}
+
+/* media */
+/* 横屏 */
+@media screen and (orientation:landscape){
+    
+}
+/* 竖屏 */
+@media screen and (orientation:portrait){
+    
+}
+/* 窗口宽度<960,设计宽度=768 */
+@media screen and (max-width:959px){
+    
+}
+/* 窗口宽度<768,设计宽度=640 */
+@media screen and (max-width:767px){
+
+}
+/* 窗口宽度<640,设计宽度=480 */
+@media screen and (max-width:639px){
+
+}
+/* 窗口宽度<480,设计宽度=320 */
+@media screen and (max-width:479px){
+
+}
+/* windows UI 贴靠 */
+@media screen and (-ms-view-state:snapped){
+    
+}
+/* 打印 */
+@media print{
+    
+}
+
+/* 搜索框 --------------------------------------------------------------------------------------------*/
+.search-bar{display: flex;-webkit-display:flex;align-items: center;font-size: 0.24rem;color: #999;padding: 0.12rem;font-size: 0.22rem;}
+.search-bar .search-form{flex: 1;-webkit-flex: 1;background-color:#fff;padding:0 0.14rem;border-radius: 3px;position: relative;transition: all 1s ease;}
+.search-bar .search-box{display: flex;-webkit-display:flex;align-items: center;}
+.search-bar .search-icon{width: 0.25rem;height: 0.25rem;background: url(../images/search.png) no-repeat center center;background-size: contain;margin: 0 0.08rem;display: inline-block;vertical-align: middle;}
+.search-bar .search-input{flex: 1;-webkit-flex: 1;color: #333;font-size: 0.22rem;padding:0.1rem 0;height: 0.46rem;border:0;}
+.search-bar .search-label{position: absolute;top: 0;right: 0;bottom: 0;left: 0;z-index: 2;border-radius: 3px;text-align: center;color: #9B9B9B;background: #fff;}
+.search-bar .search-label>span{display: inline-block;vertical-align: middle;line-height: 0.46rem;}
+.search-bar .search-cancel{margin-left:0.08rem;display: none;color: #6fc1f5;}
+.search-bar.focus-in{}
+.search-bar.focus-in .search-label{display: none;}
+.search-bar.focus-in .search-cancel{display: block;}
+
+/* 1px 边框 --------------------------------------------------------------------------------------------*/
+.one_px_border{width:100%;position: relative;}
+.one_px_border:before {content: " ";position: absolute;left: 0;top: 0;width: 100%;height: 1px;border-top: 1px solid #d9dfdf;color: #d9dfdf;-webkit-transform-origin: 0 0;transform-origin: 0 0;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+.one_px_border:after {content: " ";position: absolute;left: 0;bottom: 0;width: 100%;height: 1px;border-bottom: 1px solid #d9dfdf;color: #d9dfdf;-webkit-transform-origin: 0 100%;transform-origin: 0 100%;-webkit-transform: scaleY(0.5);transform: scaleY(0.5);}
+
+/* 提示 弹窗 --------------------------------------------------------------------------------------------*/
+.tips {position: fixed;top: 45%;left: 50%;transform: translate(-50%, -50%);background: rgba(0, 0, 0, .7);padding: 10px 15px;z-index: 20;font-size: 15px;color: #fff;border-radius: 3px;word-break: break-all;display: none;line-height: 30px;}
+.tips_show {display: block;}
+.tips_center{text-align: center;max-width:40%;}
+.tips_left{text-align: left;width:236px;}
+
+/* 弹窗动画 --------------------------------------------------------------------------------------------*/
+@-webkit-keyframes animDialog {
+	from{-webkit-transform: scale(.05);transform: scale(.05);}
+	to{-webkit-transform: scale(1);transform: scale(1);}
+}
+@keyframes animDialog {
+	from{-webkit-transform: scale(.05);transform: scale(.05);}
+	to{-webkit-transform: scale(1);transform: scale(1);}
+}
+@-webkit-keyframes bottomIn {
+	from{bottom:-100%;}
+	to{bottom:0;}
+}
+@keyframes bottomIn {
+	from{bottom:-100%;}
+	to{bottom:0;}
+}
