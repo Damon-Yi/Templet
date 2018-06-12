@@ -1,14 +1,40 @@
-/* 校验 */
+/* 正则校验 */
 REG = {
-    phone: /^(((13[0-9]{1})|(15[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/,
-    mail: /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/,
-    CH: /^[\u4e00-\u9fa5]+(·[\u4e00-\u9fa5]+)*$/,
-    code: /[0-9a-zA-Z]{6}/,
-    isMobile(num){
-        return REG.phone.test(num);
+    Number: /^[0-9]+$/,
+    Float: /^[1-9]{1}\d*(.\d{1,2})?$|^[0]{1}$|^0.\d{1,2}$/, // 两位小数
+    Mobile: /^1[3-9]\d{9}$/,
+    Tel: /^\d{3}-\d{8}|\d{4}-\d{7}|\d{11}$/,
+    Mail: /^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-zd]{2,5}$/,
+    Code: /[0-9a-zA-Z]{6}/,
+    Password: /^[a-zA-Z0-9._-]+$/,
+    Enghlish: /^[a-zA-Z]+$/,
+    Chinese: /^[^\u4E00-\u9FA5]+$/,
+    isNumber(str){
+        return REG.Number.test(str);
     },
-    isMail(mail){
-        return REG.mail.test(num);
+    isFloat(str){
+        return REG.Float.test(str);
+    },
+    isMobile(str){
+        return REG.Mobile.test(str);
+    },
+    isTel(str){
+        return REG.Tel.test(str);
+    },
+    isMail(str){
+        return REG.Mail.test(str);
+    },
+    isCode(str){
+        return REG.Code.test(str);
+    },
+    isPassword(str){
+        return REG.Password.test(str);
+    },
+    isEnghlish(str){
+        return REG.Enghlish.test(str);
+    },
+    isChinese(str){
+        return REG.Chinese.test(str);
     },
     isIdcard: function(idcard){
         var Errors = ["ok", "身份证号码位数不对!", "身份证号码出生日期超出范围或含有非法字符!", "身份证号码校验错误!", "身份证地区非法!"];
