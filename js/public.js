@@ -51,6 +51,15 @@ var origin = function() {
  * 功能：公共函数
  */
 var publicClass = publicClass || {
+    // 浏览器返回刷新
+    backRefresh: function(){
+        if(window.name != "fresh"){
+            window.name = "fresh";
+            location.reload();
+        }else{
+            window.name = "";
+        }
+    },
 	/*  
 	 *  tips('数据错误','tips_center',1500);  
 	 *	tips('数据错误','tips_left',1500); 
