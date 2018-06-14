@@ -1,15 +1,15 @@
 // 设置来源 1:PC,2:微信(android),3:微信(ios),4:android,5:ios,6:ios浏览器,7:android浏览器,8:其他
 var os = function () {
     var ua = navigator.userAgent,
-		isWindowsPhone = /(?:Windows Phone)/.test(ua),
-		isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
-		isAndroid = /(?:Android)/.test(ua),
-		isFireFox = /(?:Firefox)/.test(ua),
-		isChrome = /(?:Chrome|CriOS)/.test(ua),
-		isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
-		isPhone = /(?:iPhone)/.test(ua) && !isTablet,
-		isPc = !isPhone && !isAndroid && !isSymbian,
-		isWechat = /(?:MicroMessenger)/.test(ua),
+        isWindowsPhone = /(?:Windows Phone)/.test(ua),
+        isSymbian = /(?:SymbianOS)/.test(ua) || isWindowsPhone,
+        isAndroid = /(?:Android)/.test(ua),
+        isFireFox = /(?:Firefox)/.test(ua),
+        isChrome = /(?:Chrome|CriOS)/.test(ua),
+        isTablet = /(?:iPad|PlayBook)/.test(ua) || (isAndroid && !/(?:Mobile)/.test(ua)) || (isFireFox && /(?:Tablet)/.test(ua)),
+        isPhone = /(?:iPhone)/.test(ua) && !isTablet,
+        isPc = !isPhone && !isAndroid && !isSymbian,
+        isWechat = /(?:MicroMessenger)/.test(ua),
         isAndroidApp = /(?:wallet_android)/.test(ua),
         isiOSApp = /(?:wallet_iOS)/.test(ua);
 
@@ -23,7 +23,7 @@ var os = function () {
         isiOSApp: isiOSApp
     };
 }();
-var origin = function() {
+var origin = function () {
     if (os.isPc) {
         origin = 1;
     } else if (os.isWechat) {
@@ -52,11 +52,11 @@ var origin = function() {
  */
 var publicClass = publicClass || {
     // 浏览器返回刷新
-    backRefresh: function(){
-        if(window.name != "fresh"){
+    backRefresh: function () {
+        if (window.name != "fresh") {
             window.name = "fresh";
             location.reload();
-        }else{
+        } else {
             window.name = "";
         }
     },
@@ -64,14 +64,14 @@ var publicClass = publicClass || {
 	 *  tips('数据错误','tips_center',1500);  
 	 *	tips('数据错误','tips_left',1500); 
 	 */
-	tips: function (msg, className, time) {
-		var tipsDiv = $('<div class="tips ' + className + '"></div>');
-		$('body').append(tipsDiv);
-		tipsDiv.html(msg).addClass('tips_show');
-		setTimeout(function() {
-			tipsDiv.removeClass('tips_show').remove();
-		}, time);
-	},
+    tips: function (msg, className, time) {
+        var tipsDiv = $('<div class="tips ' + className + '"></div>');
+        $('body').append(tipsDiv);
+        tipsDiv.html(msg).addClass('tips_show');
+        setTimeout(function () {
+            tipsDiv.removeClass('tips_show').remove();
+        }, time);
+    },
     getQueryStying: function (strname) {
         var reg = new RegExp("(^|&)" + strname + "=([^&]*)(&|$)");
         var r = window.location.search.substr(1).match(reg);
@@ -82,42 +82,42 @@ var publicClass = publicClass || {
             scrollTop: 0
         }, 600);
         return false;
-	},
-	// 获取验证码
-	getCode: function(btn,time,fn){
-		var me = {};
-		me.btn = btn;
-		me.wait= time;
-		me.callBack = fn;
-		me.show = function(obj) {
-			$(me.btn).attr("disabled","disabled");
-			me.wait--;
-			$(me.btn).text(me.wait+"秒");
-			if(me.wait == -1){
-				$(me.btn).removeAttr("disabled").text("获取验证码");
-				return ;
-			}else if(me.wait == 0){
-				$(me.btn).removeAttr("disabled").text("重新获取");
-				me.wait = time;
-				return ;
-			}else if(me.wait>0){
-				setTimeout(function(){
-					me.show(me.btn);
-				}, 1000);
-			}
-		};
-		me.init = function(){
-			if($(me.btn).attr("disabled")!="disabled"){
-				me.show();
-				me.callBack(me);
-			}
-		};
-		me.reset = function(){
-			me.wait = 0;
-		};
-		me.init();
-		return me;
-	},
+    },
+    // 获取验证码
+    getCode: function (btn, time, fn) {
+        var me = {};
+        me.btn = btn;
+        me.wait = time;
+        me.callBack = fn;
+        me.show = function (obj) {
+            $(me.btn).attr("disabled", "disabled");
+            me.wait--;
+            $(me.btn).text(me.wait + "秒");
+            if (me.wait == -1) {
+                $(me.btn).removeAttr("disabled").text("获取验证码");
+                return;
+            } else if (me.wait == 0) {
+                $(me.btn).removeAttr("disabled").text("重新获取");
+                me.wait = time;
+                return;
+            } else if (me.wait > 0) {
+                setTimeout(function () {
+                    me.show(me.btn);
+                }, 1000);
+            }
+        };
+        me.init = function () {
+            if ($(me.btn).attr("disabled") != "disabled") {
+                me.show();
+                me.callBack(me);
+            }
+        };
+        me.reset = function () {
+            me.wait = 0;
+        };
+        me.init();
+        return me;
+    },
     setCookie: function (c_name, value, expiredays) {
         expiredays = expiredays == undefined ? 30 : expiredays;
         var exdate = new Date();
@@ -188,40 +188,40 @@ var publicClass = publicClass || {
                         nonceStr: res.data.nonceStr,
                         signature: res.data.signature,
                         jsApiList: [
-                                    'checkJsApi',
-                                    'onMenuShareTimeline',
-                                    'onMenuShareAppMessage',
-                                    'onMenuShareQQ',
-                                    'onMenuShareWeibo',
-                                    'hideMenuItems',
-                                    'showMenuItems',
-                                    'hideAllNonBaseMenuItem',
-                                    'showAllNonBaseMenuItem',
-                                    'translateVoice',
-                                    'startRecord',
-                                    'stopRecord',
-                                    'onRecordEnd',
-                                    'playVoice',
-                                    'pauseVoice',
-                                    'stopVoice',
-                                    'uploadVoice',
-                                    'downloadVoice',
-                                    'chooseImage',
-                                    'previewImage',
-                                    'uploadImage',
-                                    'downloadImage',
-                                    'getNetworkType',
-                                    'openLocation',
-                                    'getLocation',
-                                    'hideOptionMenu',
-                                    'showOptionMenu',
-                                    'closeWindow',
-                                    'scanQRCode',
-                                    'chooseWXPay',
-                                    'openProductSpecificView',
-                                    'addCard',
-                                    'chooseCard',
-                                    'openCard'
+                            'checkJsApi',
+                            'onMenuShareTimeline',
+                            'onMenuShareAppMessage',
+                            'onMenuShareQQ',
+                            'onMenuShareWeibo',
+                            'hideMenuItems',
+                            'showMenuItems',
+                            'hideAllNonBaseMenuItem',
+                            'showAllNonBaseMenuItem',
+                            'translateVoice',
+                            'startRecord',
+                            'stopRecord',
+                            'onRecordEnd',
+                            'playVoice',
+                            'pauseVoice',
+                            'stopVoice',
+                            'uploadVoice',
+                            'downloadVoice',
+                            'chooseImage',
+                            'previewImage',
+                            'uploadImage',
+                            'downloadImage',
+                            'getNetworkType',
+                            'openLocation',
+                            'getLocation',
+                            'hideOptionMenu',
+                            'showOptionMenu',
+                            'closeWindow',
+                            'scanQRCode',
+                            'chooseWXPay',
+                            'openProductSpecificView',
+                            'addCard',
+                            'chooseCard',
+                            'openCard'
                         ] // 必填，需要使用的JS接口列表，所有JS接口列表见附录2
                     });
                 } else {
@@ -268,9 +268,9 @@ var publicClass = publicClass || {
                     }
                 }
                 if (spmStart != '' && spmEnd != '') {
-                    if(linkUrl.indexOf("?") != -1){
+                    if (linkUrl.indexOf("?") != -1) {
                         linkUrl = link + "&spm=" + spmStart + shareId + "," + spmEnd
-                    }else{
+                    } else {
                         linkUrl = link + "?spm=" + spmStart + shareId + "," + spmEnd
                     }
                 } else {
