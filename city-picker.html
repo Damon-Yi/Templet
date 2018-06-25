@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="./lib/flexible.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>空模板</title>
+    <link href="./css/public.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="./lib/jquery-weui/weui.min.css">
+    <link rel="stylesheet" href="./lib/jquery-weui/jquery-weui.css">
+    <style>
+        
+    </style>
+</head>
+<body>
+    <div class="weui-cells weui-cells_form">
+        <div class="weui-cell">
+          <div class="weui-cell__hd"><label for="name" class="weui-label">发出地</label></div>
+          <div class="weui-cell__bd">
+            <input class="weui-input" id="start" type="text" value="湖北省 武汉市 武昌区">
+          </div>
+        </div>
+        <div class="weui-cell">
+          <div class="weui-cell__hd"><label for="date" class="weui-label">目的地</label></div>
+          <div class="weui-cell__bd">
+            <input class="weui-input" id="end" type="text" value="">
+          </div>
+        </div>
+      </div>
+    <script src="./lib/jquery/jquery-2.1.4.js"></script>
+    <script src="./lib/fastclick.js"></script>
+    <script>
+        $(function() {
+            FastClick.attach(document.body);
+        });
+    </script>
+    <script src="./lib/jquery-weui/jquery-weui.min.js"></script>
+    <script src="./lib/jquery-weui/city-picker.min.js"></script>
+    <script>
+        $("#start").cityPicker({
+          title: "选择出发地",
+          onChange: function (picker, values, displayValues) {
+            console.log(values, displayValues);
+          }
+        });
+        $("#end").cityPicker({
+          title: "选择目的地",
+          value: "湖北省 武汉市 武昌区"
+        });
+    </script>
+</body>
+</html>
