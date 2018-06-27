@@ -336,3 +336,12 @@ var publicClass = publicClass || {
         });
     }
 }
+
+/*publicClass.setWxShare({
+    title: '【买买商城】人气年货，惠聚年味',
+    desc: '京东配送春节不打烊，全场99包邮',
+    link: currentDirectory + '/index.html',
+    imgUrl: currentDirectory + '/images/share.jpg',
+    shareIndex: 7,
+    spm: this.indexSpm
+});*/
